@@ -6,7 +6,11 @@ import Swal from 'sweetalert2';
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
-    const total = cart.reduce((sum, item) => item.price + sum, 0)
+    // const total = cart.reduce((sum, item) => item.price + sum, 0);
+    // const total = cart.reduce((sum, item) => item.price + sum, 0);
+    const total = Array.isArray(cart) ? cart.reduce((sum, item) => item.price + sum, 0) : 0;
+    const test = Array.isArray(cart)
+    console.log(test);
 
     const handleDelete = item => {
         Swal.fire({
